@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>content</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/content.css"/>
+</head>
+<body>
+
+        <div class="content">
+            <div class=" message">
+
+                <div class="box1">
+                    <div class=" introduction" >
+                        <p class="p1">蓝桥杯介绍</p>
+                        <hr class="hr"/>
+                        <div class="about">
+                            <p>
+                                为促进软件和信息领域专业技术人才培养，提升高校毕业生的
+                            </p>
+                            <p>
+                                就业竞争力，由教育部就业指导中心支持，工业和信息化部人
+                            </p>
+                            <p>
+                                才交流中心举办蓝桥杯大赛。八年来，包括北大、清华在内的
+                            </p>
+                            <p>
+                                超过 1200 余所院校，累计20万余名学子报名参赛，IBM、百
+                            </p>
+                            <p>
+                                度等知名企业全程参与，成为国内始终领跑的人才培养选拔模
+                            </p>
+                            <p>
+                                式和行业认可度最高的 IT 类科技竞赛。
+                            </p>
+                        </div>
+
+                        <div class="a1">
+                            <a  href="/aboutus/">关于我们</a>
+                        </div>
+
+                </div>
+
+
+                <div class="box2">
+                    <div class=" news">
+                        <ul class="nav nav-tabs" role="tablist" style="font-size: 17px;">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">大赛新闻</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">大赛通知</a></li>
+
+                        </ul>
+                        <div class="tab-content" style="font-size: 16px;margin-top: 15px;margin-left: 10px;">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+
+                                {% for row1 in news_list %}
+                                    <div class="split1" style="margin-bottom:8px;" >
+                                        <p style="float: left;">{{ row1.news_title }}</p>
+                                        <p style="margin-left: 45rem;">{{ row1.news_time|date:"Y-m-d" }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                {% for row2 in notice_list %}
+                                    <div class="split2" style="margin-bottom:8px;">
+                                        <p style="float: left;">{{ row2.notice_title }}</p>
+                                        <p style="margin-left: 45rem;">{{ row2.notice_time|date:"Y-m-d" }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="pictures">
+
+            <div class="p0">
+                <img src="../static/images/content/p0-1.PNG" width="100%">
+            </div>
+            <div class="p1">
+                <img src="../static/images/content/p0-2.PNG" width="100%">
+            </div>
+            <div class="p2" style="width: 100%;">
+                <img src="../static/images/content/p2.PNG" width="100%">
+            </div>
+
+            <div class="p3" style="width: 100%;margin-top: 60px;">
+                <img src="../static/images/content/p3.PNG" width="100%">
+            </div>
+
+            <div class="p4-1" style="width: 100%;margin-top: 50px;">
+                <img src="../static/images/content/p4-1.PNG" width="100%">
+            </div>
+
+            <div class="p4-2" style="width: 100%;">
+                <img src="../static/images/content/p4-2.PNG" width="100%">
+            </div>
+
+            <div class="p5" style="width: 100%;margin-top: 20px;">
+                <img src="../static/images/content/p5.PNG" width="100%">
+            </div>
+
+
+            <div class="p6" style="width: 100%;margin-top: 20px;">
+                <img src="../static/images/content/p6.PNG" width="100%">
+            </div>
+
+            <div class="p7" style="width: 100%;margin-top: 20px;">
+                <img src="../static/images/content/p7.PNG" width="100%">
+            </div>
+          </div>
+
+
+        <div class="support" >
+
+            <p>友情链接</p>
+
+            <div class="go">
+                <a href="http://www.saikr.com/" target="_blank">赛氪</a>
+                <a href="http://www.godasai.com/" target="_blank">去大赛网</a>
+                <a href="http://www.saihuan.net/" target="_blank">赛欢网</a>
+                <a href="http://xiaoyuan.zbj.com/" target="_blank">八戒校园</a>
+            </div>
+        </div>
+
+ </body>
+</html>

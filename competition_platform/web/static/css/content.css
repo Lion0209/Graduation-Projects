@@ -1,0 +1,111 @@
+/*蓝桥杯介绍*/
+.content{
+    margin-top: 40px;
+    height:400px;
+}
+
+.message{
+    width: 100%;
+    text-align: center;
+    padding: 50px ;
+    padding-top: 20px;
+    padding-left:100px;
+
+}
+
+.message p{
+    margin: 0;
+}
+
+.box1{
+    width: 40%;
+    height: 320px;
+    padding: 9px;
+    box-sizing:border-box;/*定义为盒模型，即宽度包含边框和填充。*/
+    background-color:rgb(245,245,245);/*div设置背景颜色，这里的颜色其实就是padding需要的颜色*/
+    position:relative;
+}
+
+.introduction{
+    width:100%;
+    height:100%;
+    border:solid 1px rgb(238,238,238);
+    background-color:white;/*除了padding部分内容背景定义为蓝色[根据需要更改即可]*/
+    padding-top: 20px;
+}
+
+.hr{
+    padding: 0;
+    margin: 0;
+    color: black;
+    height:4px;
+}
+.p1{
+    padding-bottom: 8px;
+    color:blue;
+    font-size: 18px;
+}
+
+.about{
+    padding-top: 15px;
+    padding-bottom: 25px;
+    font-size: 16px;
+}
+
+.a1{
+    width:25%;
+    border: solid 1px blue;
+    margin:0 auto;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+
+
+/*大赛新闻和大赛通知*/
+.box2{
+    width: 140%;
+    height: 320px;
+    padding: 9px;
+    box-sizing:border-box;/*定义为盒模型，即宽度包含边框和填充。*/
+    background-color:rgb(245,245,245);/*div设置背景颜色，这里的颜色其实就是padding需要的颜色*/
+    position:absolute;
+    left: 500px;
+    bottom: 0;
+    text-align: left;
+
+}
+
+.news{
+    width:100%;
+    height:100%;
+    border:solid 1px rgb(238,238,238);
+    background-color:white;/*除了padding部分内容背景定义为蓝色[根据需要更改即可]*/
+    padding-top: 5px;
+}
+
+.box2 .p1{
+    padding-left:30px;
+}
+
+
+/*友情链接*/
+.support{
+    width:100%;
+}
+.support p{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.go{
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.go a{
+    padding: 20px;
+    color:black;
+}

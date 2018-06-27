@@ -1,0 +1,203 @@
+.reg-new .new-logo {
+    padding: 35px;
+}
+
+.reg-new {
+    background: url(../images/register-bg.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.relative {
+    position: relative;
+}
+.reg-new .reg-main {
+    background: #fff;
+    border-radius: 12px;
+    box-sizing: border-box;
+    margin: 20px auto 100px auto;
+    overflow: hidden;
+    padding: 0 35px 45px 35px;
+    width: 430px;
+}
+
+.reg-new .reg-title {
+    border-bottom: 1px solid #f1f1f1;
+    color: #333;
+    font-size: 28px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    padding: 25px 0;
+}
+
+.go-kid-box {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+}
+
+.go-kid-box a {
+    color: #3dc8b4;
+    text-decoration: none;
+}
+
+.reg-new input[type=text], .reg-new input[type=password] {
+    margin-bottom: 0;
+}
+
+.form input {
+    color: #22aef4;
+    font-size: 16px;
+    line-height: 16px;
+    text-indent: 12px;
+    margin-bottom: 20px;
+}
+
+.form input, button.sub {
+    height: 42px;
+    width: 360px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.form input {
+    display: inline-block;
+    margin-bottom: 17px;
+    border: solid 1px #999;
+}
+
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    outline: none;
+}
+
+input div{
+    margin: 0;
+    padding: 0;
+}
+
+
+.reg-new .form .sub {
+    margin-top: 10px;
+}
+.form .sub {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background: #589cdf;
+    border: none;
+    outline: none;
+}
+
+.form .code-input {
+    width: 150px;
+    margin: 0;
+}
+.form input {
+    color: #22aef4;
+    font-size: 16px;
+    line-height: 16px;
+    text-indent: 12px;
+    margin-bottom: 20px;
+}
+
+.form .code-link {
+    display: block;
+    color: #66757f;
+    text-decoration: underline;
+    margin-top: 12px;
+    cursor: auto;
+}
+
+.reg-new .agree .checkbox {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.checkbox.active {
+    background: url(../images/checkbox-checked.png) no-repeat left center;
+}
+
+.checkbox {
+    background: url(../images/checkbox-default.png) no-repeat left center;
+    cursor: pointer;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    padding: 0;
+    position: relative;
+    top: 3px;
+    text-indent: 32px;
+    vertical-align: top;
+    margin-top: -2px;
+}
+
+.form .code-img {
+    width: 80px;
+    margin: 0 15px;
+}
+
+.fl {
+    float: left;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
+a, button {
+    cursor: pointer;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.reg-new .reg-way label.school {
+    background: url(../images/regicon1.png) no-repeat;
+    background-position: 35px center;
+}
+
+.reg-way label {
+    display: block;
+    float: left;
+    width: 165px;
+    height: 45px;
+    line-height: 45px;
+    box-sizing: border-box;
+    position: relative;
+    text-indent: 66px;
+    font-size: 16px;
+    cursor: pointer;
+    border: solid #e2e1e1 1px;
+    overflow: hidden;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.checkbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+span{
+    color: red;
+}

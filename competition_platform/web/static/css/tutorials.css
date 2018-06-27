@@ -1,0 +1,24 @@
+.content{
+    width: 60%;
+
+    margin: 0 auto;
+}
+.downloadfiles{
+    width:100%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-left: 3rem;
+    text-align: left;
+}
+.files{
+    margin-left:14rem;
+    margin-top: 4rem;
+}
+.block1{
+    width:8px;
+    height: 8px;
+    background-color: #2aa7ff;
+    float: left;
+    margin-top: 3px;
+    margin-right: 6px;
+}

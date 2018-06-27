@@ -1,0 +1,66 @@
+.all{
+    font-size: 250%;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.competition1,.competition2,.competition3,.competition4{
+    border:solid 1px gray;
+    width: 43%;
+
+    text-align: center;
+
+}
+.team1,.team2{
+    clear: both;
+}
+.competition1,.competition3{
+    float:left;
+    margin-left: 7rem;
+    margin-top: 3rem;
+}
+.competition2,.competition4{
+    float:left;
+    margin-left: 2rem;
+    margin-top: 3rem;
+}
+.team2{
+    margin-bottom:30rem;
+}
+
+.interduction{
+    font-size:200%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.message{
+    text-align: left;
+    line-height: 0.6rem;
+    margin:1.2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.about{
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+.apply{
+    margin-bottom: 3rem;
+}
+
+.now p{
+    font-size: 240%;
+    text-align: center;
+
+}
+.now{
+    margin-bottom: 4rem;
+}
+
+.article{
+    margin-left: 7rem;
+}
+

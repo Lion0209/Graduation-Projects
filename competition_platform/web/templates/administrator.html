@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css ">
+    <link rel="stylesheet" type="text/css" href="/static/css/administrator.css">
+</head>
+<body>
+<div class="pg_header">
+    {% include 'SecondNavigation.html' %}
+</div>
+
+
+<div class="pg_body">
+    {# 新闻类操作#}
+    <div class="news">
+        <div class="secondnews" >
+            <div class="buttonlist" style="margin-bottom: 3rem;">
+                <button type="button" class="btn btn-success  " data-toggle="modal" data-target="#addnews" style="width: 40%;float: left;margin-left: 8rem;">
+                    添加
+                </button>
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#searchnews" style="width: 40%;margin-left: 6rem;">
+                    查询
+                </button>
+            </div>
+
+            <div class="addnews">
+                {#添加新闻信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="addnews" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">添加新闻信息</h4>
+                            </div>
+                            <form class="form1" method="POST" action="/addnews/">
+                                <div class="modal-body">
+                                    <p>新闻标题：<input type="text" name="newstitle" placeholder="请输入新闻标题"></p>
+                                    <p>新闻内容：<input type="text" name="newsdetails" placeholder="请输入新闻内容"></p>
+                                    <p>新闻时间：<input type="text" name="newstime" placeholder="请输入新闻时间"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <a type="submit" class="btn btn-success addNews">确认</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="editnews">
+                {#修改新闻信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">修改新闻信息</h4>
+                            </div>
+                            <form class="form2" method="POST" action="/editnews/">
+                                <div class="modal-body">
+                                    <p><input type="text" name="newsid" placeholder="请输入新闻编号" id="newsid"
+                                              style="display: none;"></p>
+                                    <p>新闻标题：<input type="text" name="newstitle" placeholder="请输入新闻标题" id="newstitle">
+                                    </p>
+                                    <p>新闻内容：<input type="text" name="newsdetails" placeholder="请输入新闻内容"
+                                                   id="newsdetails">
+                                    </p>
+                                    <p>新闻时间：<input type="text" name="newstime" placeholder="请输入新闻时间" id="newstime"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <a type="submit" class="btn btn-success editNews">确认</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="searchnews">
+                {#查询新闻信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="searchnews" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">查询新闻信息</h4>
+                            </div>
+                            <form class="form3" method="POST" action="/searchnews/">
+                                <div class="modal-body">
+                                    <p>新闻编号：<input class="newsid" type="text" name="newsid" placeholder="请输入新闻编号"></p>
+                                    <p>新闻标题：<input class="newstitle" type="text" name="newstitle" placeholder="请输入新闻标题">
+                                    </p>
+                                    <p>新闻时间：<input class="newstime" type="text" name="newstime" placeholder="请输入新闻时间">
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <input type="submit" class="btn btn-success searchNews" value="确认"></input>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-hover " style="word-break: break-all; word-wrap: break-word;">
+                <tr>
+                    <th style="text-align: center;width: 84px;">新闻编号</th>
+                    <th style="width: 379px;">新闻标题</th>
+                    <th>新闻内容</th>
+                    <th style="width: 107px;">新闻时间</th>
+                    <th colspan="2" style="text-align: center;">操作</th>
+                </tr>
+                {% for row in news_list %}
+                    <tr>
+                        <td style="padding-top: 1.4rem;text-align: center;">{{ row.news_id }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.news_title }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.news_details }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.news_time|date:"Y-m-d" }}</td>
+                        <td style="width: 6rem;"><a href="#" name="updatenews" data-toggle="modal" data-target="#myModal2"><button class="btn btn-warning">修改</button></a></td>
+                        <td style="width: 6rem;"><a href="/deletenews?news_id={{ row.news_id }}"><button class="btn btn-danger">删除</button></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="pg_footer">
+    {% include 'footer.html' %}
+</div>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+<script>
+    //添加新闻
+    $('.addNews').click(function () {
+        $.ajax({
+                url: '/addnews/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form1').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        //去模态对话框
+                        $('.modal').addClass('hide');
+                        $('.modal-backdrop').removeClass('in');
+                        refreshData();
+                    } else {
+                        //show error message
+                        $('.err_msg').text(response.err_msg.error);
+                    }
+                },
+                error: function () {
+                    alert("请求异常")
+                }
+            }
+        )
+    });
+
+
+    //修改时先显示相应信息
+    function update() {
+        $("a[name='updatenews']").each(function () {
+            $(this).click(function () {
+                console.log("行的");
+                var a = $(this).parent().parent().children().eq(0).text();
+                var b = $(this).parent().parent().children().eq(1).text();
+                var c = $(this).parent().parent().children().eq(2).text();
+                var d = $(this).parent().parent().children().eq(3).text();
+                $('#newsid').val(a);
+                $('#newstitle').val(b);
+                $('#newsdetails').val(c);
+                $('#newstime').val(d);
+            })
+        })
+    }
+    update();
+
+    //修改新闻
+    $('.editNews').click(function () {
+        $.ajax({
+                url: '/editnews/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form2').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        //去模态对话框
+                        $('.modal').addClass('hide');
+                        $('.modal-backdrop').removeClass('in');
+                        refreshData()
+                    } else {
+                        //show error message
+                        $('.err_msg').text(response.err_msg.error);
+                    }
+                },
+                error: function () {
+                    alert("请求异常")
+                }
+            }
+        )
+    });
+
+    {#刷新页面#}
+    function refreshData() {
+        window.location.reload()
+    }
+
+    {#去掉登录按钮#}
+    function removebutton() {
+        $('.DLZC').hide();
+    }
+    removebutton();
+
+
+</script>
+
+</body>
+</html>

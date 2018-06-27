@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
+</head>
+<body class="reg-new">
+    <div class="new-logo">
+        <a href="/index.html"><img src="http://static.lanqiao.cn/dasai/images/login/logo.png"></a>
+    </div>
+    <div class="reg-main">
+        <div class="reg-title relative">
+            <p>注册蓝桥账号</p>
+            <div class="go-kid-box">
+{#                <a href="http://kid.lanqiao.cn/user/reg.do">由此注册少儿赛账号&gt;</a>#}
+            </div>
+        </div>
+        <form id="regform" method="POST">
+            <div class="form mt30">
+                <p>{{ form.username }} <span> {{ form.errors.username.0 }}</span></p>
+                <p>{{ form.pwd }} <span>{{ form.errors.pwd.0 }}</span></p>
+                <p>{{ form.repwd }} <span>{{ form.errors.repwd.0 }}</span></p>
+                <p>{{ form.vcode }} <img src="check_code.html" onclick="changeCheckcode(this)"></p>
+                <p><span>{{ form.errors.vcode.0 }}</span></p>
+                <button type="submit" class="sub">立即注册</button>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script>
+        function changeCheckcode(ths){
+            ths.src = ths.src + '?';
+        };
+        $(function () {
+            var input_list = $('input');
+            $.each(input_list ,function (k,v) {
+                $(v).removeAttr('required')
+            })
+        })
+    </script>
+</body>
+</html>

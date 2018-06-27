@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大赛报名</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css ">
+    <link rel="stylesheet" type="text/css" href="/static/css/administrator.css">
+</head>
+<body>
+<div class="pg_header">
+    {% include 'SecondNavigation.html' %}
+</div>
+
+<div class="pg-body">
+    <div class="competitioninfo">
+        <div class="secondcompetitioninfo">
+
+            <div class="buttonlist" style="margin-bottom: 3rem;">
+                <button type="button" class="btn btn-success " data-toggle="modal" data-target="#addcompetitioninfo" style="width: 40%;float: left;margin-left: 8rem;">
+                    添加
+                </button>
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#searchcompetitioninfo" style="width: 40%;margin-left: 6rem;">
+                    查询
+                </button>
+            </div>
+
+            <div class="addcompetitioninfo">
+                <!-- 模态框添加数据 -->
+                {#添加用户信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="addcompetitioninfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">添加大赛报名信息</h4>
+                            </div>
+                            <form class="form1" method="POST" action="/addcompetitioninfo/">
+                                <div class="modal-body">
+                                    <p>用户姓名：<input type="text" name="username" placeholder="请输入用户姓名"></p>
+                                    <p>用户电话：<input type="text" name="userphone" placeholder="请输入用户电话号码"></p>
+                                    <p>参赛组别：<input type="text" name="competitiontype" placeholder="请输入参赛组别"></p>
+                                    <p>具体比赛：<input type="text" name="competitiondetails" placeholder="请输入具体比赛"></p>
+                                    <p>比赛时间：<input type="text" name="competitiontime" placeholder="请输入比赛时间"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <a type="submit" class="btn btn-success addUserInfo">确认</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <table class="table table-hover">
+                <tr>
+                    <th>用户姓名</th>
+                    <th>用户手机号</th>
+                    <th>参赛组别</th>
+                    <th>具体比赛</th>
+                    <th>比赛时间</th>
+
+                    <th colspan="2" style="text-align: center;">操作</th>
+                </tr>
+                {% for row in competitioninfo_list %}
+                    <tr>
+                        <td style="padding-top: 1.4rem;">{{ row.competition_username }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.competition_userphone }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.competition_type }}</td>
+                        <td style="padding-top: 1.4rem;"> {{ row.competition_details }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.competition_time|date:"Y-m-d" }}</td>
+                        <td style="width: 6rem;"><a href="#" name="updatecompetitioninfo" data-toggle="modal" data-target="#editcompetitioninfo"><button class="btn btn-warning">修改</button></a></td>
+                        <td style="width: 6rem;"><a href="/deletecompetitioninfo?competitioninfo_phone={{ row.competition_username }}"><button class="btn btn-danger">删除</button></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="pg_footer">
+    {% include 'footer.html' %}
+</div>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/PersonalInfo.css">
+
+</head>
+<body style="background-color: rgb(241,241,241);">
+<div class="pg_header">
+    {% include 'header.html' %}
+</div>
+
+<div class="pg_body">
+    <div class="personalinfo ">
+        <div class="row" style="width:90%;margin: 0 auto;">
+            <div class="col-md-3" style="background-color: white;height: 450px;">
+                {% if  request.user.is_authenticated %}
+
+                    <div class="userinfo " style="">
+                        <div style="float: left;margin-top: 5rem;margin-left: 4rem;">
+                            <img class="img" src="/static/images/default.png" width=100px>
+                            <p class="current_user" style="color: black;margin-top: 1rem;">{{ request.user }}</p>
+                            <p role="presentation" class="active"
+                               style="font-size: 18px;margin-top: 3rem;letter-spacing: 4px;"><a href="#write" aria-controls="home" role="tab" data-toggle="tab">填写信息</a>
+                            </p>
+                            <p role="presentation" style="font-size: 18px;margin-top: 2rem;letter-spacing: 4px;"><a
+                                    href="#show" class="showuserinfo" aria-controls="profile" role="tab"
+                                    data-toggle="tab">我的信息</a></p>
+                            <p role="presentation" style="font-size: 18px;margin-top: 2rem;letter-spacing: 4px;"><a
+                                    href="#edit" name="updateuserinfo" class="edituserinfo" aria-controls="profile"
+                                    role="tab" data-toggle="tab">修改信息</a></p>
+                        </div>
+                        <div class="haha"
+                             style="background-color: rgb(241,241,241);width:20px;height: 450px;float: right">
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-9" style="background-color: white;height: 450px;">
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane active" id="write">
+                        <p style="font-weight: bold;font-size: 17px;margin-bottom: 2rem;margin-top: 2rem;">请如实填写个人信息</p>
+                        <form class="form1" action="/adduserinfo/" method="POST"
+                              style="text-align: left;margin-left: 23rem;">
+                            <p>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" id="name1" class="required" placeholder="姓名" name="username"><span class="errorname"></span></p>
+                            <p>电&nbsp;&nbsp;&nbsp;&nbsp;话：<input type="text" id="phone1" class="required" placeholder="电话号码" name="userphone"><span class="errorphone"></span></p>
+                            <p>性&nbsp;&nbsp;&nbsp;&nbsp;别：<input type="radio"  checked="checked" name="usersex" value="男">男&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="usersex" value="女">女</p>
+                            <p>证&nbsp;&nbsp;&nbsp;&nbsp;件：<select style="width: 14.5rem;" name="usertype">
+                                <option value="选择"><--请选择证件类型--></option>
+                                <option value="身份证">身份证</option>
+                                <option value="护照">护照</option>
+                            </select></p>
+                            <p>证件号：<input type="text" id="number1" class="required" placeholder="证件号" name="usernumber"><span class="errornumber"></span></p>
+                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;日：<input type="text" id="birth1" class="required" placeholder="生日" name="userbirth"><span class="errorbirth"></span></p>
+                            <button class="btn btn-sm btn-info login-submit input1 " type="button" value="重新填写"
+                                    onclick="reload()">重新填写</button>
+                            <a class="btn btn-sm btn-success login-submit input1 userInfo" type="submit"
+                               value="提交">提交</a>
+                        </form>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="show">
+                        <p style="font-weight: bold;font-size: 17px;margin-bottom: 2rem;margin-top: 2rem;">我的个人信息</p>
+
+                        <p>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input id="name" type="text" placeholder="姓名"></p>
+                        <p>电&nbsp;&nbsp;&nbsp;&nbsp;话：<input id="phone" type="text" placeholder="电话号码"></p>
+                        <p>性&nbsp;&nbsp;&nbsp;&nbsp;别：<input id="sex" type="text" placeholder="性别"></p>
+                        <p>证&nbsp;&nbsp;&nbsp;&nbsp;件：<input id="type" type="text" placeholder="证件类型"></p></p>
+                        <p>证件号：<input id="number" type="text" placeholder="证件号"></p>
+                        <p>生&nbsp;&nbsp;&nbsp;&nbsp;日：<input id="birth" type="text" placeholder="生日"></p>
+
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="edit">
+                        <p style="font-weight: bold;font-size: 17px;margin-bottom: 2rem;margin-top: 2rem;">修改个人信息</p>
+                        <form class="form2" action="/edituserinfo/" method="POST">
+                            <p>姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input id="editname"  type="text2" placeholder="姓名" name="editname"></p>
+                            <p>电&nbsp;&nbsp;&nbsp;&nbsp;话：<input id="editphone"  type="text2" placeholder="电话号码" name="editphone"></p>
+                            <p style="margin-left: -9rem">性&nbsp;&nbsp;&nbsp;&nbsp;别：<input  type="radio" checked="checked" name="editsex" value="男">男&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="editsex" value="女">女</p>
+                            <p>证&nbsp;&nbsp;&nbsp;&nbsp;件：<select  style="width: 14.5rem;" name="edittype">
+                                <option value="身份证">身份证</option>
+                                <option value="护照">护照</option>
+                            </select></p>
+                            </p>
+                            <p>证件号：<input id="editnumber"  type="text2" placeholder="证件号" name="editnumber"></p>
+                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;日：<input id="editbirth"  type="text2" placeholder="生日" name="editbirth"></p>
+                            <a class="btn btn-sm btn-success login-submit input1 EdituserInfo" type="submit"
+                               value="提交" style="width:20rem;">确认修改</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pg_footer">
+    {% include 'footer.html' %}
+</div>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+
+
+<script>
+    function reload() {
+        $('#write').find('input[type="text"]').each(function () {
+            $(this).val("");
+        })
+        $('.errorname').text("");
+        $('.errorphone').text("");
+        $('.errornumber').text("");
+        $('.errorbirth').text("");
+    }
+
+    $('.form1 :input.required').bind('input',function(){
+        if($(this).is('#name1')) {
+            var nameVal = $.trim(this.value);
+            var regname = /^([\u4e00-\u9fa5]){2,7}$/;
+            if (nameVal == ""||(nameVal!==""&&!regname.test(nameVal))) {
+                var errorMsg = "  姓名为空或包含了特殊字符！";
+                console.log()
+                $('.errorname').text(errorMsg);
+                $('.errorname').css('color','red');
+            }
+            else {
+                var okMsg = "  输入的姓名格式正确！";
+                $('.errorname').text(okMsg);
+                $('.errorname').css('color','green');
+            }
+        }
+        if($(this).is('#phone1')){
+            var phoneVal = $.trim(this.value);
+            var regphone = /^1(3|4|5|7|8)\d{9}$/;
+            if(phoneVal == ""||(phoneVal!==""&&!regphone.test(phoneVal)) ){
+                var errorMsg = "  电话号码为空或电话号码格式不正确！";
+                $('.errorphone').text(errorMsg);
+                $('.errorphone').css('color','red');
+            }
+            else {
+                var okMsg = "  输入电话号码格式正确！";
+                $('.errorphone').text(okMsg);
+                $('.errorphone').css('color','green');
+            }
+        }
+        if($(this).is('#number1')){
+            var numberVal = $.trim(this.value);
+            var regnumber = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+            if(numberVal == ""|| (numberVal!==""&&!regnumber.test(numberVal)) ){
+                var errorMsg = "  证件号为空或证件号格式不正确！";
+                $('.errornumber').text(errorMsg);
+                $('.errornumber').css('color','red');
+            }
+            else {
+                var okMsg = "  输入证件号格式正确！";
+                $('.errornumber').text(okMsg);
+                $('.errornumber').css('color','green');
+            }
+        }
+
+        if($(this).is('#birth1')){
+            var birthVal = $.trim(this.value);
+            var regbirth =  /^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/;
+            if(birthVal == ""|| (birthVal!==""&&!regbirth.test(birthVal)) ){
+                var errorMsg = "  生日为空或生日格式不正确！";
+                $('.errorbirth').text(errorMsg);
+                $('.errorbirth').css('color','red');
+            }
+            else {
+                var okMsg = "  输入生日格式正确";
+                $('.errorbirth').text(okMsg);
+                $('.errorbirth').css('color','green');
+            }
+        }
+    });
+
+
+    $('.showuserinfo').click(function () {
+        var user = $('.current_user').text();
+        $.ajax({
+                url: '/showuserinfo/',
+                type: 'POST',
+                traditional: true,
+                data: {'user': user},
+                success: function (result) {
+                    response = JSON.parse(result);
+                    console.log(response);
+                    if (response.status == 'True') {
+                        console.log("come on");
+                        $('#name').val(response.username);
+                        $('#phone').val(response.userphone);
+                        $('#sex').val(response.usersex);
+                        $('#type').val(response.usertype);
+                        $('#number').val(response.usernumber);
+                        $('#birth').val(response.userbirth);
+
+                    }
+                },
+                error: function () {
+                    alert("显示信息失败！")
+                }
+            }
+        )
+    });
+
+    $('.userInfo').click(function () {
+        $.ajax({
+                url: '/adduserinfo/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form1').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        //去模态对话框
+                        alert("添加信息成功！");
+                        refreshData()
+                    } else {
+                        //show error message
+                        $('.err_msg').text(response.err_msg.error);
+                    }
+                },
+                error: function () {
+                    alert("添加信息失败！")
+                }
+            }
+        )
+    });
+    function refreshData() {
+        window.location.reload()
+    }
+
+    {#修改前先展示数据#}
+    $('.edituserinfo').click(function () {
+        var user = $('.current_user').text();
+        $.ajax({
+                url: '/showuserinfo/',
+                type: 'POST',
+                traditional: true,
+                data: {'user': user},
+                success: function (result) {
+                    response = JSON.parse(result);
+                    console.log(response)
+                    if (response.status == 'True') {
+
+                        $('#editname').val(response.username);
+                        $('#editphone').val(response.userphone);
+                        {#$('#editsex').val(response.usersex);#}
+                        {#$('#edittype').val(response.usertype);#}
+                        $('#editnumber').val(response.usernumber);
+                        $('#editbirth').val(response.userbirth);
+
+                    }
+                },
+            }
+        )
+    });
+
+    $('.EdituserInfo').click(function () {
+        $.ajax({
+                url: '/edituserinfo/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form2').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        alert("修改成功！");
+                        //refreshData()
+                    } else {
+                        //show error message
+                        $('.err_msg').text(response.err_msg.error);
+                    }
+                },
+                error: function () {
+                    alert("修改信息失败！")
+                }
+            }
+        )
+    });
+
+</script>
+</body>
+</html>

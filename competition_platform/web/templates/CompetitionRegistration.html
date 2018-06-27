@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大赛报名</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/PersonalInfo.css">
+</head>
+<body style="background-color: rgb(241,241,241);">
+<div class="pg_header">
+    {% include 'header.html' %}
+</div>
+
+<div class="pg_body">
+    <div class="personalinfo ">
+        <div class="row" style="width:90%;margin: 0 auto;">
+            <div class="col-md-3" style="background-color: white;height: 450px;">
+                {% if  request.user.is_authenticated %}
+                    <div class="competitioninfo " style="">
+                        <div style="float: left;margin-top: 5rem;margin-left: 4rem;">
+                            <img class="img" src="/static/images/default.png" width=100px>
+                            <p class="current_user" style="color: black;margin-top: 1rem;">{{ request.user }}</p>
+                            <p role="presentation" class="active"
+                               style="font-size: 18px;margin-top: 3rem;letter-spacing: 4px;"><a href="#signup" aria-controls="home" role="tab" data-toggle="tab">大赛报名</a>
+                            </p>
+                            <p role="presentation" style="font-size: 18px;margin-top: 2rem;letter-spacing: 4px;">
+                                <a href="#showcompetitioninfo" class="showcompetitioninfo" aria-controls="profile" role="tab"
+                                   data-toggle="tab">查看报名信息</a>
+                            </p>
+                        </div>
+                        <div class="haha"
+                             style="background-color: rgb(241,241,241);width:20px;height: 450px;float: right">
+
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-9" style="background-color: white;height: 450px;">
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane active" id="signup">
+                        <p style="font-weight: bold;font-size: 17px;margin-bottom: 2rem;margin-top: 4rem;">请填写大赛信息</p>
+
+                        <form class="form1" action="/addcompetitioninfo/" method="POST"
+                              style="text-align: left;margin-left: 23rem;">
+                            {% if  request.user.is_authenticated %}
+                                <p>用户姓名：<input type="text" id="name1" class="required" placeholder="用户姓名" name="username"
+                                               value="{{ request.user }}"><span class="errorname"></span></p>
+                            {% endif %}
+                            <p>电话号码：<input type="text" id="phone1" class="required" placeholder="电话号码" name="userphone"><span class="errorphone"></span></p>
+
+                            <p>参赛组别：<select class="types" style="width: 14.5rem;" name="competitiontype">
+                                <option value="个人赛-软件类">个人赛-软件类</option>
+                                <option value="个人赛-电子类">个人赛-电子类</option>
+                                <option value="个人赛—用户体验设计赛">个人赛—用户体验设计赛</option>
+                                <option value="团队赛">团队赛</option>
+                            </select></p>
+                            <p>具体比赛：<select class="details" style="width: 14.5rem;" name="competitiondetail">
+                                <option value="Java软件开发">Java软件开发</option>
+                                <option value="C++程序设计">C++程序设计</option>
+                                <option value="单片机设计与开发">单片机设计与开发</option>
+                                <option value="嵌入式设计与开发">嵌入式设计与开发</option>
+                            </select></p>
+                            <p>比赛时间：<input type="text" id="time1" class="required" placeholder="比赛时间" name="competitiontime"><span class="errorbirth"></span></p>
+
+                            <input class="btn btn-sm btn-info login-submit input1 " type="button" value="重新填写"
+                                   onclick="reload()">
+                            <button class="btn btn-sm btn-success login-submit input1 competitionInfo" type="submit"
+                                    value="提交" style="margin-left: 1rem;">提交
+                            </button>
+                        </form>
+
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="showcompetitioninfo">
+                        <p style="font-weight: bold;font-size: 17px;margin-bottom: 2rem;margin-top: 4rem;">已报名比赛信息</p>
+
+                        <p>用户姓名：<input id="name" type="text" placeholder="用户姓名"></p>
+                        <p>电话号码：<input id="phone" type="text" placeholder="电话号码"></p>
+                        <p>参赛组别：<input id="type" type="text" placeholder="参赛组别"></p>
+                        <p>具体比赛：<input id="detail" type="text" placeholder="具体比赛"></p></p>
+                        <p>比赛时间：<input id="time" type="text" placeholder="比赛时间"></p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pg_footer">
+    {% include 'footer.html' %}
+</div>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+<script>
+    $('.competitionInfo').click(function () {
+        $.ajax({
+                url: '/addcompetitioninfo/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form1').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        alert("报名成功！");
+                        refreshData();
+                    } else {
+                        $('.err_msg').text(response.err_msg.error);
+                    }
+                },
+                error: function () {
+                    alert("报名失败！")
+                }
+            }
+        )
+    });
+
+    function reload() {
+        $('#write').find('input[type="text"]').each(function () {
+            $(this).val("");
+        })
+        $('.errorname').text("");
+        $('.errorphone').text("");
+        $('.errornumber').text("");
+        $('.errorbirth').text("");
+    }
+
+    $('.showcompetitioninfo').click(function () {
+        var user = $('.current_user').text();
+        $.ajax({
+                url: '/showcompetitioninfo/',
+                type: 'POST',
+                traditional: true,
+                data: {'user': user},
+                success: function (result) {
+                    response = JSON.parse(result);
+                    console.log(response);
+                    if (response.status == 'True') {
+                        console.log("come on");
+                        $('#name').val(response.username);
+                        $('#phone').val(response.userphone);
+                    }
+                },
+                error: function () {
+                    alert("显示信息失败！")
+                }
+            }
+        )
+    });
+
+
+    function refreshData() {
+        window.location.reload()
+    }
+
+    $('.form1 :input.required').bind('input',function() {
+        if ($(this).is('#name1')) {
+            {# console.log("hfhfhfhfh");#}
+            var nameVal = $.trim(this.value);
+            var regname = /^([\u4e00-\u9fa5]){2,7}$/;
+            if (nameVal == "" || (nameVal !== "" && !regname.test(nameVal))) {
+                console.log("aaaaaaaaaaa");
+                var errorMsg = "  姓名为空或包含了特殊字符！";
+                console.log()
+                $('.errorname').text(errorMsg);
+                $('.errorname').css('color', 'red');
+            }
+            else {
+                var okMsg = "  输入的姓名格式正确！";
+                $('.errorname').text(okMsg);
+                $('.errorname').css('color', 'green');
+            }
+        }
+
+        if($(this).is('#phone1')){
+            var phoneVal = $.trim(this.value);
+            var regphone = /^1(3|4|5|7|8)\d{9}$/;
+            if(phoneVal == ""||(phoneVal!==""&&!regphone.test(phoneVal)) ){
+                var errorMsg = "  电话号码为空或电话号码格式不正确！";
+                $('.errorphone').text(errorMsg);
+                $('.errorphone').css('color','red');
+            }
+            else {
+                var okMsg = "  输入电话号码格式正确！";
+                $('.errorphone').text(okMsg);
+                $('.errorphone').css('color','green');
+            }
+        }
+
+        if($(this).is('#time1')){
+            var birthVal = $.trim(this.value);
+            var regbirth =  /^(19|20)\d{2}-(1[0-2]|0?[1-9])-(0?[1-9]|[1-2][0-9]|3[0-1])$/;
+            if(birthVal == ""|| (birthVal!==""&&!regbirth.test(birthVal)) ){
+                var errorMsg = "  日期为空或日期格式不正确！";
+                $('.errorbirth').text(errorMsg);
+                $('.errorbirth').css('color','red');
+            }
+            else {
+                var okMsg = "  输入日期格式正确";
+                $('.errorbirth').text(okMsg);
+                $('.errorbirth').css('color','green');
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

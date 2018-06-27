@@ -1,0 +1,30 @@
+.content{
+    width:70%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-left: 18rem;
+}
+.title{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom:3rem;
+}
+.details{
+    margin-bottom: 4rem;
+}
+.time{
+    margin-bottom: 3rem;
+}
+.head{
+    float: right;
+    width:7rem;
+    color: gray;
+}
+.block{
+    width:8px;
+    height: 8px;
+    background-color: #2aa7ff;
+    float: left;
+    margin-top: 3px;
+    margin-right: 6px;
+}

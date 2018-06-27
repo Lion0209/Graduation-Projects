@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginModel</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css ">
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css ">
+    <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.css"/>
+</head>
+<body>
+        <!-- 普通用户登录模态对话框开始 -->
+        <div id="modal_login1" class="modal_login hide">
+            <form class="form" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" onclick="Hide('.shade,.modal_login');"><span>×</span>
+                    </button>
+                    <h3>登录蓝桥账号</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>账号</p>
+
+                        <input type="text"  class="form-control center" placeholder="请输入用户名" name="username">
+
+                    </div>
+                    <div class="form-group">
+                        <p>密码</p>
+                        <input type="password"  class="form-control center" placeholder="请输入密码" name="password" required="">
+                    </div>
+                    <div class="form-group">
+                        <p>验证码</p>
+                        <input type="text"  class="form-control" placeholder="请输入验证码" name="check_code" required="" style="width: 150px;float:left;margin-left: 50px">
+                        <img src="check_code.html" onclick="changeCheckcode(this)">
+                    </div>
+
+                    <div class="err_info" style="width: 20px">
+                        <span style="color: red;position: fixed" class="err_msg"></span>
+                    </div>
+                    <a class="btn btn-lg btn-primary btn-block login-submit" type="submit">立即登录</a>
+{#                        <input class="btn btn-lg btn-primary btn-block login-submit" type="submit" value="提交">#}
+
+                </div>
+                <div class="modal-footer" style="margin-top: 10px;">
+                    <p style="text-align: center">
+                        其他登录方式
+                    </p>
+                    <div class="other-way clearfix" style="text-align: center">
+                        <a href="javascript:void(0);" name="weixinLogin" class="fa fa-qq"></a>
+                        <a href="javascript:void(0);" name="weixinLogin" class="fa fa-weixin"></a>
+                        <a href="javascript:void(0);" name="weixinLogin" class="fa fa-weibo"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 普通用户登录模态对话框结束 -->
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>具体新闻</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/details.css">
+</head>
+<body>
+<div class="pg_header">
+    {% include 'header.html' %}
+</div>
+
+<div class="pg-body">
+
+    <div class="content">
+
+
+        {% for row in news_list %}
+            <div class="all">
+                <div class="title">
+                    {{ row.news_title }}
+                    <div class="head" style="margin-bottom: 6px;">
+                        <div class="block"></div>
+                        <div style="font-size: 12px;">大赛组委会</div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    {{ row.news_details }}
+                </div>
+
+                <div class="time">
+                    {{ row.news_time|date:"Y-m-d" }}
+                </div>
+                <hr/>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="pg_footer">
+        {% include 'footer.html' %}
+    </div>
+</div>
+
+
+</body>
+</html>

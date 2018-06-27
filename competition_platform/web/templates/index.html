@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+    <div class="pg-header">
+        {#页面顶部#}
+        {% include 'header.html' %}
+    </div>
+
+    <div class="pg-body">
+
+        {#轮播图#}
+        {% include 'carousel.html' %}
+
+        {#蓝桥杯介绍和新闻#}
+        {% include 'content.html' %}
+
+
+
+        {#页面底部#}
+        {% include 'footer.html'%}
+
+    </div>
+
+</body>
+</html>

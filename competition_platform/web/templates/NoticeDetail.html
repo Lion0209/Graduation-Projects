@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>具体通知</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/details.css">
+</head>
+<body>
+<div class="pg_header">
+    {% include 'header.html' %}
+</div>
+
+<div class="pg-body">
+
+    <div class="content">
+
+
+        {% for row in notice_list %}
+            <div class="all">
+                <div class="title">
+                    {{ row.notice_title }}
+                    <div class="head" style="margin-bottom: 6px;">
+                        <div class="block"></div>
+                        <div style="font-size: 12px;">大赛组委会</div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    {{ row.notice_details }}
+                </div>
+
+                <div class="time">
+                    {{ row.notice_time|date:"Y-m-d" }}
+                </div>
+                <hr/>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="pg_footer">
+        {% include 'footer.html' %}
+    </div>
+</div>
+</body>
+</html>

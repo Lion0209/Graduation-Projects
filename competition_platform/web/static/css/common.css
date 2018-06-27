@@ -1,0 +1,118 @@
+.shade {
+    position: fixed;
+    z-index: 1040;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+.modal_login {
+    position: fixed;
+    top: 18%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -45px;
+    width: 430px;
+    height: 585px;
+    z-index: 1070;
+    background-color: white;
+}
+
+
+.pg-body{
+    position: absolute;
+    z-index: 90;
+    top:70px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-body .center{
+    margin-top: 20px;
+    width: 300px;
+    margin-left: 50px;
+}
+
+.modal-body a{
+    margin-top: 40px;
+    width: 300px;
+    margin-left: 50px;
+}
+
+
+.user-info {
+    padding: 0 88px 0 10px;
+    height: 48px;
+    position: relative;
+}
+
+.user-info .avatar {
+    display: inline-block;
+    margin-right: 20px;
+    height: 48px;
+}
+
+.right{
+    float:right;
+}
+
+.user-info .more-info {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 20px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-color: #fff;
+    color: #333;
+    z-index: 100;
+}
+
+.user-info:hover .more-info {
+    display: block;
+}
+.user-info .more-info .more-item {
+    display: block;
+    min-width: 160px;
+    padding: 0 15px;
+    line-height: 35px;
+    text-decoration: none;
+    color: #000000;
+
+}
+.user-info .more-info .more-item:hover{
+    background-color: #f1f0f0;
+}
+
+.user-info a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.user-info .img {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    width: 40px;
+    height: 48px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+

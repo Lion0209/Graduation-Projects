@@ -1,0 +1,46 @@
+
+.relation{
+    margin-top: 10rem;
+    margin-left: 10rem;
+}
+.p0,.p1,.p2,.p3{
+    width: 45%;
+    height: 15rem;
+    background-color: white;
+    font-size: 100%;
+    float: left;
+    margin: 0.6rem;
+
+
+}
+.box1,.box2,.box3,.box4,.box5,.box6{
+    clear:both;
+}
+.detail1{
+    margin-top: 2rem;
+    margin-bottom:35rem;
+    margin-left: 9.4rem;
+}
+.p1,.p3{
+    margin-left: 1.5rem;
+
+}
+.p2,.p3{
+    width:45%;
+    height:27rem;
+
+}
+.add{
+    background-color: #F1F1F1;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+
+}
+.p0 p,.p1 p{
+    padding-left: 3.5rem;
+}
+
+.p0:first-child{
+    padding-top: 2.5rem;
+}
+

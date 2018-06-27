@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息类操作</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css ">
+    <link rel="stylesheet" type="text/css" href="/static/css/administrator.css">
+</head>
+<body>
+{# 用户信息类操作#}
+<div class="pg_header">
+    {% include 'SecondNavigation.html' %}
+</div>
+<div class="pg-body">
+    <div class="userinfo">
+        <div class="seconduserinfo">
+
+            <div class="buttonlist" style="margin-bottom: 3rem;">
+                <button type="button" class="btn btn-success " data-toggle="modal" data-target="#adduserinfo" style="width: 40%;float: left;margin-left: 8rem;">
+                    添加
+                </button>
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#searchuserinfo" style="width: 40%;margin-left: 6rem;">
+                    查询
+                </button>
+            </div>
+
+            <div class="adduserinfo">
+                <!-- 模态框添加数据 -->
+                {#添加用户信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="adduserinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">添加用户信息</h4>
+                            </div>
+                            <form class="form1" method="POST" action="/adduserinfo/">
+                                <div class="modal-body">
+                                    <p>用户姓名：<input type="text" name="username" placeholder="请输入用户姓名"></p>
+                                    <p>用户电话：<input type="text" name="userphone" placeholder="请输入用户电话号码"></p>
+                                    <p>用户性别：<input type="text" name="usersex" placeholder="请输入用户性别"></p>
+                                    <p>证件类型：<input type="text" name="usertype" placeholder="请输入用户证件类型"></p>
+                                    <p>证件号码：<input type="text" name="usernumber" placeholder="请输入用户证件号码"></p>
+                                    <p>用户生日：<input type="text" name="userbirth" placeholder="请输入用户生日"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <a type="submit" class="btn btn-success addUserInfo">确认</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="searchuserinfo">
+                {#查询新闻信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="searchuserinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">查询新闻信息</h4>
+                            </div>
+                            <form class="form2" method="POST" action="/searchuserinfo/">
+                                <div class="modal-body">
+                                    <p>用户姓名：<input class="username" type="text" name="username" placeholder="请输入用户姓名"></p>
+                                    <p>用户电话：<input class="userphone" type="text" name="userphone" placeholder="请输入用户电话"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <input type="submit" class="btn btn-success searchUserInfo" value="确认"></input>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="edituserinfo">
+                {#修改通知信息模态框#}
+                <!-- Modal -->
+                <div class="modal fade" id="edituserinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">修改新闻信息</h4>
+                            </div>
+                            <form class="form3" method="POST" action="/edituserinfo/">
+                                <div class="modal-body">
+                                    <p>用户姓名：<input type="text" name="username" placeholder="请输入姓名" id="username" ></p>
+                                    <p>用户电话：<input type="text" name="userphone" placeholder="请输入手机号" id="userphone"></p>
+                                    <p>用户性别：<input type="text" name="usersex" placeholder="请输入性别（男或女）" id="usersex"></p>
+                                    <p>证件类型：<input type="text" name="usertype" placeholder="请输入证件类型（身份证或护照）" id="usertype"></p>
+                                    <p>证件号码：<input type="text" name="usernumber" placeholder="请输入证件号码" id="usernumber"></p>
+                                    <p>用户生日：<input type="text" name="userbirth" placeholder="请输入生日" id="userbirth"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <a type="submit" class="btn btn-success editUserInfo">确认</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <tr>
+                    <th>用户姓名</th>
+                    <th>用户电话号码</th>
+                    <th>用户性别</th>
+                    <th>用户证件类型</th>
+                    <th>用户证件号码</th>
+                    <th>用户生日</th>
+                    <th colspan="2" style="text-align: center;">操作</th>
+                </tr>
+                {% for row in userinfo_list %}
+                    <tr>
+                        <td style="padding-top: 1.4rem;">{{ row.user_name }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.user_phone }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.user_sex }}</td>
+                        <td style="padding-top: 1.4rem;"> {{ row.user_type }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.user_number }}</td>
+                        <td style="padding-top: 1.4rem;">{{ row.user_birth|date:"Y-m-d" }}</td>
+                        <td style="width: 6rem;"><a href="#" name="updateuserinfo" data-toggle="modal" data-target="#edituserinfo"><button class="btn btn-warning">修改</button></a></td>
+                        <td style="width: 6rem;"><a href="/deleteuserinfo?userinfo_phone={{ row.user_phone }}"><button class="btn btn-danger">删除</button></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="pg_footer">
+    {% include 'footer.html' %}
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script>
+    //添加用户信息
+    $('.addUserInfo').click(function () {
+        $.ajax({
+            url:"/adduserinfo/",
+            type:'POST',
+            traditional:true,
+            data:$('.form1').serialize(),
+            success:function (result) {
+                var response = JSON.parse(result);
+                if(response.status=='True'){
+                    //去模态对话框
+                    $('.modal').addClass('hide');
+                    $('.modal-backdrop').removeClass('in');
+                    refreshData();
+                }
+            },
+            error:function () {
+                alert("添加用户信息失败");
+            }
+        })
+    });
+
+    //查询用户信息
+    //修改时先显示相应信息
+    function update() {
+        $("a[name='updateuserinfo']").each(function () {
+            $(this).click(function () {
+                console.log("行的");
+                var a = $(this).parent().parent().children().eq(0).text();
+                var b = $(this).parent().parent().children().eq(1).text();
+                var c = $(this).parent().parent().children().eq(2).text();
+                var d = $(this).parent().parent().children().eq(3).text();
+                var e = $(this).parent().parent().children().eq(4).text();
+                var f = $(this).parent().parent().children().eq(5).text();
+                $('#username').val(a);
+                $('#userphone').val(b);
+                $('#usersex').val(c);
+                $('#usertype').val(d);
+                $('#usernumber').val(e);
+                $('#userbirth').val(f);
+            })
+        })
+    }
+    update();
+
+    $('.editUserInfo').click(function () {
+        $.ajax({
+                url: '/edituserinfo/',
+                type: 'POST',
+                traditional: true,
+                data: $('.form3').serialize(),
+                success: function (result) {
+                    var response = JSON.parse(result);
+                    console.log(response.status);
+                    if (response.status == 'True') {
+                        //去模态对话框
+                        $('.modal').addClass('hide');
+                        $('.modal-backdrop').removeClass('in');
+                        refreshData()
+                    }
+                },
+                error: function () {
+                    alert("修改用户信息失败！")
+                }
+            }
+        )
+    });
+    {#刷新页面#}
+    function refreshData() {
+        window.location.reload()
+    }
+</script>
+</body>
+</html>

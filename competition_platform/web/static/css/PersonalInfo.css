@@ -1,0 +1,41 @@
+
+.personalinfo{
+    width:90%;
+    height:450px;
+    margin-top: 10rem;
+    margin-bottom: 6rem;
+    margin-left: 6rem;
+    text-align: center;
+}
+#write p{
+    margin-bottom: 2.5rem;
+}
+#write .input1{
+    width:9.5rem;
+}
+#show .input1{
+    width:9.5rem;
+}
+#show p{
+    margin-bottom: 2.5rem;
+}
+#edit .input1{
+    width:9.5rem;
+}
+#edit p{
+    margin-bottom: 2.5rem;
+}
+
+#signup .input1{
+    width:9.5rem;
+}
+#signup p{
+    margin-bottom: 2.5rem;
+}
+#showcompetitioninfo p{
+    margin-top: 1rem;
+    margin-bottom:3.5rem;
+}
+.high{
+    color:red;
+}
